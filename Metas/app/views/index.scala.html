@@ -1,0 +1,94 @@
+@(metas:List[Meta])
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
+
+    <title>Metas</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="@routes.Assets.at("dist/css/bootstrap.min.css")" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="@routes.Assets.at("stylesheets/cover.css")" rel="stylesheet">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="@routes.Assets.at("dist/js/bootstrap.min.js")"></script>
+    
+  </head>
+
+  <body>
+
+    <div class="site-wrapper">
+
+      <div class="site-wrapper-inner">
+
+        <div class="cover-container">
+
+          <div class="masthead clearfix">
+            <div class="inner">
+              <h3 class="masthead-brand">Quais as suas metas?</h3>
+              <ul class="nav masthead-nav">
+                <li class="active"><a href="index">Início</a></li>
+                <li><a href="cadastro">Nova Meta</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <div class="grid grid-pad">
+        	<div class="col-1-3 panel panel-info"  id="lista-semana-1">
+        		<div class="panel-heading">Bootstrap 3 - Panel Primary</div>
+        		@for(meta <- metas){        	
+        			@if(meta.getPrazo()=="1"){
+        				@if(meta.isCumprida()){
+        				<div style="background-color: #99FF99">
+        					<label class="table_row_nome">Nome</label>
+        					<label class="table_row_descricao">Descricao</label>
+        					<div style="float:right">
+        						<a href="@routes.Application.remover(meta.getId())">Remover</a>
+        					</div>
+        				</div>
+        				}else{
+        				<div>
+        					<label class="table_row_nome">Nome</label>
+        					<label class="table_row_descricao">Descricao</label>
+        					<div style="float:right">
+        						<a href="@routes.Application.remover(meta.getId())">Remover</a>
+        					</div>
+        					<a style="float:right" href="@routes.Application.cumprida(meta.getId())">Cumprida</a>
+        				</div>
+        				}
+        			}
+        			<br>
+        		}
+        	</div>
+        	<div class="col-1-3" id="lista-semana-2">
+        		<h2>2 semanas</h2>
+        	</div>
+        	<div class="col-1-3" id="lista-semana-3">
+        		<h2>3 semanas</h2>
+        	</div>
+		</div>
+		
+		<div class="grid grid-pad">
+        	<div class="col-1-3" id="lista-semana-4">
+        		<h2>4 semanas</h2>
+        	</div>
+        	<div class="col-1-3" id="lista-semana-5">
+        		<h2>5 semanas</h2>
+        	</div>
+        	<div class="col-1-3" id="lista-semana-6">
+        		<h2>6 semanas</h2>
+        	</div>
+		</div>
+      </div>
+
+    </div>
+  </body>
+</html>

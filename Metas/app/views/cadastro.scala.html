@@ -1,0 +1,85 @@
+@(metaForm: Form[Meta])
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
+    
+
+    <title>Cover Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="@routes.Assets.at("dist/css/bootstrap.min.css")" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="@routes.Assets.at("stylesheets/cover.css")" rel="stylesheet">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="@routes.Assets.at("dist/js/bootstrap.min.js")"></script>
+    <script src="http://code.jquery.com/jquery-1.8.2.js"></script>
+	<script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
+	
+	<script> 
+		$(function() { 
+			$( "#calendario" ).datepicker({
+					dateFormat: 'dd/mm/yy',
+					minDate: 0, 
+					maxDate: "+1M +15D"
+			});
+		}); 
+	</script>
+	
+  </head>
+
+  <body>
+
+    <div class="site-wrapper">
+
+      <div class="site-wrapper-inner">
+
+        <div class="cover-container">
+
+          <div class="masthead clearfix">
+            <div class="inner">
+              <h3 class="masthead-brand">META</h3>
+              <ul class="nav masthead-nav">
+                <li><a href="index">Início</a></li>
+                <li class="active"><a href="cadastrar">Nova Meta</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+		<form action="@routes.Application.cadastrar()" method="post">
+			 
+            Nome: <input type="text" name="nome" class="form-control" style="width:30px" required="required"><br><br>
+            Descricao: <input type="text" name="descricao" class="form-control"required="required"><br><br>
+            Prioridade:
+            <select name="prioridade" class="form-control">
+                <option value="" disabled>-- Selecione uma --</option>
+                <option value="baixa">Baixa</option>
+                <option value="media">Media</option>
+                <option value="alta">Alta</option>
+            </select> <br><br>
+            Prazo:
+            <select name="prazo" class="form-control">
+                <option value="" disabled>-- Selecione uma --</option>
+                <option value="1">1 semana</option>
+                <option value="2">2 semanas</option>
+                <option value="3">3 semanas</option>
+                <option value="4">4 semanas</option>
+                <option value="5">5 semanas</option>
+                <option value="6">6 semanas</option>
+            </select>
+			<br>
+			<br>
+            <input type="submit" class="btn btn-primary" value="Create">
+        </form>
+		
+      </div>
+  </body>
+</html>
