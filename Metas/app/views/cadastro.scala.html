@@ -54,20 +54,18 @@
           </div>
         </div>
 
-		<form action="@routes.Application.cadastrar()" method="post">
-			 
-            Nome:
-            <input type="text" name="nome" class="form-control" required="required"><br><br>
-            Descricao: <input type="text" name="descricao" class="form-control"required="required"><br><br>
+		<form action="@routes.Application.cadastrar()" id="formulario" method="post">
+            Nome: <input type="text" name="nome" style="color: black;" required="required"><br><br>
+            Descricao: <input type="text" name="descricao" style="color: black;" required="required"><br><br>
             Prioridade:
-            <select name="prioridade" class="form-control">
+            <select name="prioridade" style="color: black;">
                 <option value="" disabled>-- Selecione uma --</option>
                 <option value="baixa">Baixa</option>
                 <option value="media">Media</option>
                 <option value="alta">Alta</option>
             </select> <br><br>
             Prazo:
-            <select name="prazo" class="form-control">
+            <select name="prazo" style="color: black;">
                 <option value="" disabled>-- Selecione uma --</option>
                 <option value="1">1 semana</option>
                 <option value="2">2 semanas</option>
@@ -78,7 +76,7 @@
             </select>
 			<br>
 			<br>
-            <input type="submit" class="btn btn-primary" value="Create">
+            <input type="submit" class="btn btn-primary" value="Registrar">
         </form>
 		
       </div>

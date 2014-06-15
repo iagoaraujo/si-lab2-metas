@@ -160,10 +160,10 @@ body {
   }
   
 #formulario {
+margin-left:37%;
 position:relative;
 font-family:"Times New Roman";
 font-size:20px;
-color: white;
 }
 
 #formulario input.campo_nome
@@ -198,5 +198,4 @@ color: white;
 .table_row_descricao{
 	color: black;
 }
-
 }
