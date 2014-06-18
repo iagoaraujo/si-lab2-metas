@@ -6,7 +6,6 @@
 	<persistence-unit name="h2PersistenceUnit"
 		transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
-		<non-jta-data-source>DefaultDS</non-jta-data-source>
 		<properties>
 			<property name="hibernate.connection.url" value="jdbc:h2:mem:play" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" />

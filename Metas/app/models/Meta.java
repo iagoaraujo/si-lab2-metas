@@ -1,7 +1,5 @@
 package models;
 
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,10 +7,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 
-import play.data.format.Formats;
-
 @Entity(name="meta")
-public class Meta {
+public class Meta implements Comparable<Meta>{
+	
+	private final String PRIORIDADE_BAIXA = "baixa";
+	private final String PRIORIDADE_MEDIA = "media";
+	private final String PRIORIDADE_ALTA = "alta";
 
 	@Id
 	@SequenceGenerator(name = "META_SEQUENCE", sequenceName = "META_SEQUENCE", allocationSize = 1, initialValue = 0)
@@ -29,11 +29,21 @@ public class Meta {
 	private String prazo;
 	
 	@Column
-	private boolean cumprida = false;
+	private boolean cumprida = false;;
 	
 	@Column
 	private String prioridade;
 
+	public Meta() {
+	}
+	
+	public Meta(String nome, String descricao, String prazo, String prioridade) {
+		this.nome = nome;
+		this.descricao = descricao;
+		this.prazo = prazo;
+		this.prioridade = prioridade;
+	}
+	
 	public String getPrioridade() {
 		return prioridade;
 	}
@@ -80,5 +90,28 @@ public class Meta {
 
 	public void setCumprida(boolean cumprida) {
 		this.cumprida = cumprida;
+	}
+
+	@Override
+	public int compareTo(Meta outraMeta) {
+		if(this.prioridade.equals(PRIORIDADE_BAIXA)){
+			if(!outraMeta.prioridade.equals(PRIORIDADE_BAIXA)){
+				return -1;
+			}
+		}
+		else if(this.prioridade.equals(PRIORIDADE_MEDIA)){
+			if(outraMeta.prioridade.equals(PRIORIDADE_BAIXA)){
+				return 1;
+			}
+			else if(outraMeta.prioridade.equals(PRIORIDADE_ALTA)){
+				return -1;
+			}
+		}
+		else if(this.prioridade.equals(PRIORIDADE_ALTA)){
+			if(!outraMeta.prioridade.equals(PRIORIDADE_ALTA)){
+				return 1;
+			}
+		}
+		return this.nome.compareTo(outraMeta.nome);
 	}
 }
